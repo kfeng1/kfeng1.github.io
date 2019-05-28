@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'eclipse'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['byow']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'lib/library-sp19/javalib', include: '*.jar')
+}
+
+mainClassName = 'byow.Core.Main'
+
+task(runRandom, dependsOn: 'classes', type: JavaExec) {
+    main = 'byow.lab12.RandomWorldDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runBoring, dependsOn: 'classes', type: JavaExec) {
+    main = 'byow.lab12.BoringWorldDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runRect, dependsOn: 'classes', type: JavaExec) {
+    main = 'byow.WorldGen.RectangleDemo'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+version = '0.1.0'
